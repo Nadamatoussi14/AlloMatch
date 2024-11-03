@@ -23,6 +23,7 @@
     "@capacitor/camera": "^6.1.0",
     "@ionic-native/core": "^5.36.0",
     "@ionic-native/local-notifications": "^5.36.0",
+    "@ionic-native/native-geocoder": "^5.36.0",
     "@ionic/angular": "^7.3.0",
     "@ionic/cordova-builders": "^11.0.0",
     "@types/leaflet": "^1.9.12",

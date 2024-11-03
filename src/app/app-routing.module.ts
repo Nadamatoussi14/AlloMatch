@@ -88,7 +88,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/create-team/create-team.module').then( m => m.CreateTeamPageModule)
   },
   {
-    path: 'team-details',
+    path: 'team-details/:id',
     loadChildren: () => import('./pages/team-details/team-details.module').then( m => m.TeamDetailsPageModule)
   },
   {
@@ -99,10 +99,7 @@ const routes: Routes = [
     path: 'rate-participant',
     loadChildren: () => import('./pages/rate-participant/rate-participant.module').then( m => m.RateParticipantPageModule)
   },
-  {
-    path: 'user-feedback',
-    loadChildren: () => import('./pages/user-feedback/user-feedback.module').then( m => m.UserFeedbackPageModule)
-  },
+ 
   {
     path: 'user-profile',
     loadChildren: () => import('./pages/user-profile/user-profile.module').then( m => m.UserProfilePageModule)
@@ -146,6 +143,14 @@ const routes: Routes = [
   {
     path: 'map',
     loadChildren: () => import('./map/map.module').then( m => m.MapPageModule)
+  },
+  {
+    path: 'pickup-location',
+    loadChildren: () => import('./pickup-location/pickup-location.module').then( m => m.PickupLocationPageModule)
+  },
+  {
+    path: 'match-feedback',
+    loadChildren: () => import('./pages/match-feedback/match-feedback.module').then( m => m.MatchFeedbackPageModule)
   },
  
 

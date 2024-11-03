@@ -177,7 +177,7 @@ ion-tabs {
   bottom: 0; /* Positionner en bas de la page */
   left: 0; /* Aligner à gauche */
   padding: 4px 0; /* Espacement interne */
-
+ contain: none !important;
   ion-tab-bar {
     background-color: #FFFFFF; /* Couleur de fond des onglets */
     border-radius: 10px 0px 0px 0px; /* Coins arrondis */

@@ -18,7 +18,7 @@ export class TeamListPage implements OnInit {
   }
 
   viewTeamDetails(teamId: number) {
-    this.router.navigate(['/team-details', teamId]);
+    this.router.navigateByUrl(`/team-details/${teamId}`);
   }
 
   createNewTeam() {

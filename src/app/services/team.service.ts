@@ -33,7 +33,14 @@ export class TeamService {
   addMemberToTeam(teamId: number, member: string) {
     const team = this.getTeamById(teamId);
     if (team) {
-      team.members.push(member);
+      // Vérifier si le membre existe déjà dans l'équipe
+      if (!team.members.includes(member)) {
+        team.members.push(member);
+      } else {
+        console.warn(`${member} is already a member of ${team.name}.`);
+      }
+    } else {
+      console.error(`Team with ID ${teamId} not found.`);
     }
   }
 
@@ -42,6 +49,8 @@ export class TeamService {
     if (team) {
       team.performance.wins += wins;
       team.performance.losses += losses;
+    } else {
+      console.error(`Team with ID ${teamId} not found.`);
     }
   }
 }

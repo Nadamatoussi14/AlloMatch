@@ -31,7 +31,7 @@ export class EventListPage implements OnInit {
   }
 
   viewEvent(event: Event) {
-    this.router.navigate(['/event-detail']);
+    this.router.navigateByUrl(`/event-detail/${event.id}`);
   }
 
   editEvent(event: Event) {

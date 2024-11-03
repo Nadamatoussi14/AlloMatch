@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { UserFeedbackPageRoutingModule } from './user-feedback-routing.module';
+import { MatchFeedbackPageRoutingModule } from './match-feedback-routing.module';
 
-import { UserFeedbackPage } from './user-feedback.page';
+import { MatchFeedbackPage } from './match-feedback.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    UserFeedbackPageRoutingModule
+    MatchFeedbackPageRoutingModule
   ],
-  declarations: [UserFeedbackPage]
+  declarations: [MatchFeedbackPage]
 })
-export class UserFeedbackPageModule {}
+export class MatchFeedbackPageModule {}

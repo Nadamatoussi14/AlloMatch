@@ -1,14 +1,14 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Invite Member to {{ event?.title }}</ion-title>
-  </ion-toolbar>
-</ion-header>
+
 
 <ion-content>
+  <div style="display: flex; align-items: center; justify-content: center; position: relative; margin-top: 40px;">
+    <ion-back-button style="position: absolute; left: 10px; color: black;" icon-only="true" defaultHref="/"></ion-back-button>
+    <h2 style="text-align: center; color: #000; margin: 0;"> Invite Member</h2>
+  </div>
   <ion-item>
     <ion-label position="stacked">Email</ion-label>
     <ion-input [(ngModel)]="email" type="email" placeholder="Enter member's email"></ion-input>
   </ion-item>
 
-  <ion-button expand="full" (click)="sendInvitation()" [disabled]="!email">Send Invitation</ion-button>
+  <ion-button  (click)="sendInvitation()" [disabled]="!email">Send Invitation</ion-button>
 </ion-content>

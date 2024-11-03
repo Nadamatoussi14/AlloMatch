@@ -1,19 +1,29 @@
-
-
 <ion-content class="ion-page">
   <div style="display: flex; align-items: center; justify-content: center; position: relative; margin-top: 40px;">
     <ion-back-button style="position: absolute; left: 10px; color: black;" icon-only="true" defaultHref="/"></ion-back-button>
-    <h2 style="text-align: center; color: #000; margin: 0;"> Profile</h2>
+    <h2 style="text-align: center; color: #000; margin: 0;">Profile</h2>
   </div>
+  
   <div *ngIf="userProfile">
     <div class="profile-container">
       <img [src]="userProfile.avatarUrl || 'assets/images/Ellipse 8.png'" alt="Avatar" class="profile-avatar" />
 
-  <div class="profile-details">
-    <h2 class="profile-name">{{ userProfile.name }}</h2>
-    <p class="profile-email">Email: {{ userProfile.email }}</p>
-  </div>
-</div>
+      <div class="profile-details">
+        <h2 class="profile-name">{{ userProfile.name }}</h2>
+        <p class="profile-email">Email: {{ userProfile.email }}</p>
+        <p>Note Moyenne: {{ averageRating | number: '1.1-1' }}/5</p>
+      </div>
+    </div>
+
+    <!-- Section pour les évaluations individuelles -->
+    <ion-list>
+      <ion-item *ngFor="let feedback of feedbackService.getFeedbackByUser(userProfile.id)">
+        <ion-label>
+          Note: {{ feedback.rating }} / 5
+          <p>Commentaire: {{ feedback.comment }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
 
     <!-- Affichage des statistiques -->
     <ion-card class="profile-card">
@@ -28,32 +38,25 @@
           </div>
         </div>
       </ion-card>
-      
-    
-  
-      
+
       <ion-button expand="block" class="add-match-button" (click)="addMatch($event)">
         <ion-icon slot="start" name="basketball-outline"></ion-icon>
         <span class="button-text">Add Match</span>
         <ion-icon slot="end" class="icon-end" name="chevron-forward-outline"></ion-icon>
       </ion-button>
-      
-<ion-button expand="block" class="edit-profile-button" (click)="editProfile($event)">
-  <ion-icon slot="start" name="create-outline"></ion-icon>
-  <span class="button-text">Edit Profile</span>
-  <ion-icon slot="end" class="icon-end" name="chevron-forward-outline"></ion-icon>
-</ion-button>
 
+      <ion-button expand="block" class="edit-profile-button" (click)="editProfile($event)">
+        <ion-icon slot="start" name="create-outline"></ion-icon>
+        <span class="button-text">Edit Profile</span>
+        <ion-icon slot="end" class="icon-end" name="chevron-forward-outline"></ion-icon>
+      </ion-button>
 
-<ion-button expand="block" class="logout-button" (click)="logout($event)">
-  <ion-icon slot="start" name="log-out-outline"></ion-icon>
-  <span class="button-text">Logout</span>
-  <ion-icon slot="end" class="icon-end" name="chevron-forward-outline"></ion-icon>
-</ion-button>
+      <ion-button expand="block" class="logout-button" (click)="logout($event)">
+        <ion-icon slot="start" name="log-out-outline"></ion-icon>
+        <span class="button-text">Logout</span>
+        <ion-icon slot="end" class="icon-end" name="chevron-forward-outline"></ion-icon>
+      </ion-button>
 
-
-      
-      
       <div *ngIf="editMode">
         <ion-item>
           <ion-label>Name</ion-label>
@@ -67,9 +70,9 @@
         <ion-button (click)="toggleEdit()">Cancel</ion-button>
       </div>
     </ion-card>
-    
   </div>
 </ion-content>
+
 <ion-tabs>
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="home" [routerLink]="['/home']">

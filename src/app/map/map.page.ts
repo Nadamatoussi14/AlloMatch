@@ -1,25 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { Map, tileLayer } from 'leaflet';
-
+import { ActivatedRoute, Router } from '@angular/router';
+import { Map, tileLayer, marker } from "leaflet";
+import {NativeGeocoder,NativeGeocoderOptions} from "@ionic-native/native-geocoder/ngx";
 @Component({
   selector: 'app-map',
   templateUrl: './map.page.html',
   styleUrls: ['./map.page.scss'],
 })
 export class MapPage implements OnInit {
-  map!: Map;
 
+  pickupLocation: any ;
+
+  constructor(private router:Router,private route:ActivatedRoute) {
+    this.route.queryParams.subscribe((params: any) => {
+      const currentNavigation = this.router.getCurrentNavigation();
+      if (currentNavigation && currentNavigation.extras.state) {
+        this.pickupLocation = currentNavigation.extras.state['pickupLocation'];
+      }
+    });
+  }
   ngOnInit(): void {
-    this.loadMap();
+    console.log('hello')
   }
 
-  loadMap() {
-    // Initialiser la carte avec un ID
-    this.map = new Map('mapId').setView([51.505, -0.09], 13); // Coordonnées pour Londres
 
-    // Ajouter le calque de tuiles
-    tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
-    }).addTo(this.map);
+  onpickupClick(){
+    this.router.navigateByUrl('tabs/tab1/pickup-location');
   }
+
 }

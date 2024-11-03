@@ -3,6 +3,7 @@ import { UserService } from 'src/app/services/user.service';
 import { UserProfile } from 'src/app/models/user.model';
 import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/auth-service.service';
+import { FeedbackService } from 'src/app/services/feedback.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -11,8 +12,9 @@ import { AuthServiceService } from 'src/app/auth-service.service';
 })
 export class UserProfilePage implements OnInit {
   userProfile: UserProfile;
+  averageRating: number;
 
-  constructor(private userService: UserService, private authService: AuthServiceService, private router: Router) {
+  constructor(private userService: UserService, private authService: AuthServiceService, private router: Router,    private feedbackService: FeedbackService) {
     // Initialisation avec un profil utilisateur par défaut
     this.userProfile = this.defaultUserProfile();
   }
@@ -25,6 +27,7 @@ export class UserProfilePage implements OnInit {
   loadUserProfile() {
     const profile = this.userService.getUserProfile();
     this.userProfile = profile || this.defaultUserProfile(); // Assurez-vous de ne pas avoir d'erreur
+    this.averageRating = this.feedbackService.getAverageRating(profile.id);
   }
 
   // Méthode pour retourner un profil utilisateur par défaut

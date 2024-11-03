@@ -9,28 +9,37 @@ import { Router } from '@angular/router';
   styleUrls: ['./forgot-password.page.scss'],
 })
 export class ForgotPasswordPage implements OnInit {
-email:any
-  constructor(private authService:AuthServiceService,private toastController: ToastController,private router: Router) { }
+  email: string;
+  verificationCode: (number | null)[] = [null, null, null, null];
 
-  ngOnInit() {
-  }
+  constructor(private authService: AuthServiceService, private toastController: ToastController, private router: Router) {}
 
-  reset(){
-    this.authService.resetPassword(this.email).then( () =>{      
-      console.log('sent'); //show confirmation dialog
-      this.presentToast()
-    })
-  }
-  async presentToast() {
-    const toast = await this.toastController.create({
-      message: 'Your reset password link has been sent on your email',
-      duration: 2000, // Duration in milliseconds
-      position: 'bottom' // Position of the toast (top, bottom, middle)
-    });
-  
-    toast.present();
-    toast.onDidDismiss().then(()=>{
+  ngOnInit() {}
+
+  sendVerificationCode() {
+    this.authService.sendVerificationCode(this.email).then(() => {
+      console.log('Verification code sent');
       this.router.navigate(['/verify']);
-    })
+    });
+  }
+
+  verifyCode() {
+    const codeEntered = this.verificationCode.join('');
+    this.authService.verifyCode(codeEntered).then(isValid => {
+      if (isValid) {
+        this.router.navigate(['/create-password']);
+      } else {
+        this.presentToast('Invalid verification code');
+      }
+    });
+  }
+
+  async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message,
+      duration: 2000,
+      position: 'bottom',
+    });
+    toast.present();
   }
 }

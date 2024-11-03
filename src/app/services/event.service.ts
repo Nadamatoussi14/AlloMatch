@@ -1,15 +1,32 @@
 import { Injectable } from '@angular/core';
 import { Event } from '../models/event.model';
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
-  // Liste des événements
+  // Liste des événements avec les détails des équipes
   private events: Event[] = [
-    { id: 1, title: 'Match 1', date: '2024-09-01', location: 'Stadium A', description: 'First match description' },
-    { id: 2, title: 'Match 2', date: '2024-09-15', location: 'Stadium B', description: 'Second match description' },
+    {
+      id: 1,
+      title: 'Match 1',
+      date: '2024-09-01',
+      location: 'Stadium A',
+      description: 'First match description',
+      visibility: 'public',
+      team1: { name: 'Team A', image: 'assets/images/teamA.png' },
+      team2: { name: 'Team B', image: 'assets/images/teamB.png' }
+    },
+    {
+      id: 2,
+      title: 'Match 2',
+      date: '2024-09-15',
+      location: 'Stadium B',
+      description: 'Second match description',
+      visibility: 'public',
+      team1: { name: 'Team C', image: 'assets/images/teamC.png' },
+      team2: { name: 'Team D', image: 'assets/images/teamD.png' }
+    }
     // Ajoutez d'autres événements si nécessaire
   ];
 

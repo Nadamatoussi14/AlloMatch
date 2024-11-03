@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { EventService } from './services/event.service';
 import { UserService } from './services/user.service';
 
-
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx'; // Import du NativeGeocoder
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -25,7 +25,7 @@ import { UserService } from './services/user.service';
     AngularFireModule.initializeApp(environment.firebaseConfig), // Utilisation de l'API compat
     AngularFireAuthModule,
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },EventService,AuthServiceService,UserService],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },EventService,AuthServiceService,UserService,  NativeGeocoder],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

@@ -1,10 +1,16 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Map Page</ion-title>
+    <ion-title>
+      Access Location
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <!-- Élément <div> pour afficher la carte -->
-  <div id="mapId" style="height: 100%;"></div>
+  <ion-item style="cursor: pointer;margin-top:100px;" (click)="onpickupClick()">
+    <ion-icon slot="start" name="locate"></ion-icon>
+    <ion-label position="stacked">Pickup Location</ion-label>
+     <ion-textarea  style="margin-top:20px;" >{{pickupLocation}}</ion-textarea>
+  </ion-item>
+
 </ion-content>

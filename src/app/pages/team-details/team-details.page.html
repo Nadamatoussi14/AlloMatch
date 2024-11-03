@@ -18,8 +18,8 @@
 
       <ion-item>
         <ion-label position="stacked">Add Member</ion-label>
-        <ion-input [(ngModel)]="newMember"></ion-input>
-        <ion-button (click)="addMember()">Add</ion-button>
+        <ion-input [(ngModel)]="newMember" placeholder="Enter member name"></ion-input>
+        <ion-button (click)="addMember()" expand="full">Add</ion-button>
       </ion-item>
     </ion-card-content>
   </ion-card>
@@ -34,11 +34,11 @@
 
       <ion-item>
         <ion-label position="stacked">Add Wins</ion-label>
-        <ion-input type="number" [(ngModel)]="wins"></ion-input>
+        <ion-input type="number" [(ngModel)]="wins" placeholder="Enter wins"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Add Losses</ion-label>
-        <ion-input type="number" [(ngModel)]="losses"></ion-input>
+        <ion-input type="number" [(ngModel)]="losses" placeholder="Enter losses"></ion-input>
       </ion-item>
       <ion-button expand="full" (click)="trackPerformance(wins || 0, losses || 0)">Update Performance</ion-button>
     </ion-card-content>

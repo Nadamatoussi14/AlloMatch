@@ -28,13 +28,14 @@ export class TeamDetailsPage implements OnInit {
 
   addMember() {
     if (this.newMember && this.team) {
+      // Utilisez le service pour ajouter un membre
       this.teamService.addMemberToTeam(this.team.id, this.newMember);
-      if (this.team) {
-        this.team.members.push(this.newMember); // Mettez à jour l'UI pour afficher le nouveau membre
-      }
-      this.newMember = '';
+      // Recharger l'équipe pour mettre à jour l'UI
+      this.team = this.teamService.getTeamById(this.team.id);
+      this.newMember = ''; // Réinitialiser le champ de saisie
     }
   }
+  
 
   trackPerformance(wins: number, losses: number) {
     if (this.team && wins !== undefined && losses !== undefined) {

@@ -1,14 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Event } from 'src/app/models/event.model';
 
-interface Event {
-  id?: number;
-  title: string;
-  date: string;
-  location: string;
-  description: string;
-  visibility: string; 
-}
 
 @Component({
   selector: 'app-event-create',
@@ -17,7 +10,8 @@ interface Event {
 })
 export class EventCreatePage {
 
-  event: Event = { title: '', date: new Date().toISOString(), location: '', description: '', visibility: 'public' }; // Valeur par défaut ajoutée
+  event: Event = {  id: 0, title: '', date: new Date().toISOString(), location: '', description: '', visibility: 'public' };
+
 
   constructor(private router: Router, private route: ActivatedRoute) {
     const eventId = this.route.snapshot.paramMap.get('id');
@@ -32,25 +26,18 @@ export class EventCreatePage {
   }
 
   saveEvent() {
-    if (this.event.id) {
-      // Update the event
-      console.log('Updating event:', this.event);
-    } else {
-      // Create a new event
-      console.log('Creating event:', this.event);
-    }
+    console.log('Saving event:', this.event);
     this.router.navigate(['/event-list']);
   }
 
   openLocationPicker() {
     this.router.navigate(['pickup-location'], {
       queryParams: { position: 'destination' },
-      state: { pickupLocation: this.event.location } // Optionnel, si vous souhaitez pré-remplir le champ
+      state: { pickupLocation: this.event.location }
     });
   }
 
   ngOnInit() {
-    // Écoutez les paramètres de requête pour récupérer l'adresse de la page de localisation
     this.router.events.subscribe(() => {
       const navigation = this.router.getCurrentNavigation();
       if (navigation && navigation.extras.state) {
