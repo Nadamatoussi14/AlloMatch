@@ -10,7 +10,7 @@ import { Event } from 'src/app/models/event.model';
 })
 export class EventDetailPage implements OnInit {
   event: Event;
-  selectedTeam: 'team1' | 'team2' | null = null; // Variable pour stocker l'équipe sélectionnée
+  selectedTeam: 'team1' | 'team2' | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,6 +26,7 @@ export class EventDetailPage implements OnInit {
     if (eventId) {
       const event = this.eventService.getEventById(+eventId);
       if (event) {
+        console.log("Event trouvé :", event); // Debug : affichez l’événement dans la console
         this.event = event;
       } else {
         console.error('Event not found');
@@ -38,8 +39,10 @@ export class EventDetailPage implements OnInit {
   loadEventDetails(eventId: number) {
     this.event = {
       id: eventId,
+      name: 'Sample Event', // Ajoutez la propriété name
       title: 'Match 1',
       date: '2024-09-01',
+      time: '15:00', // Ajoutez cette ligne pour définir l'heure
       location: 'Stadium A',
       description: 'Description 1',
       visibility: 'public',

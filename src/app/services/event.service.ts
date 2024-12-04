@@ -10,24 +10,55 @@ export class EventService {
     {
       id: 1,
       title: 'Match 1',
+      name: 'Championship Game', // Ajoutez cette propriété si nécessaire
       date: '2024-09-01',
+      time: '15:00',
       location: 'Stadium A',
       description: 'First match description',
       visibility: 'public',
-      team1: { name: 'Team A', image: 'assets/images/teamA.png' },
-      team2: { name: 'Team B', image: 'assets/images/teamB.png' }
+      team1: { 
+        name: 'Team A', 
+        image: 'assets/images/teamA.png',
+        members: [
+          { name: 'Player 1A', image: 'assets/images/foot1.jpg' },
+          { name: 'Player 2A', image: 'assets/images/foot2.jpg' }
+        ]
+      },
+      team2: { 
+        name: 'Team B', 
+        image: 'assets/images/teamB.png',
+        members: [
+          { name: 'Player 1B', image: 'assets/images/foot5.png' },
+          { name: 'Player 2B', image: 'assets/images/foot6.PNG' }
+        ]
+      }
     },
     {
       id: 2,
       title: 'Match 2',
+      name: 'Friendly Game', // Ajoutez cette propriété si nécessaire
       date: '2024-09-15',
+      time: '18:30',
       location: 'Stadium B',
       description: 'Second match description',
       visibility: 'public',
-      team1: { name: 'Team C', image: 'assets/images/teamC.png' },
-      team2: { name: 'Team D', image: 'assets/images/teamD.png' }
+      team1: { 
+        name: 'Team C', 
+        image: 'assets/images/teamC.png',
+        members: [
+          { name: 'Player 1C', image: 'assets/images/foot9.avif' },
+          { name: 'Player 2C', image: 'assets/images/foot8.png' }
+        ]
+      },
+      team2: { 
+        name: 'Team D', 
+        image: 'assets/images/teamD.png',
+        members: [
+          { name: 'Player 1D', image: 'assets/images/foot2.jpg' },
+          { name: 'Player 2D', image: 'assets/images/foot3.jpg' }
+        ]
+      }
     }
-    // Ajoutez d'autres événements si nécessaire
   ];
 
   // Retourne tous les événements

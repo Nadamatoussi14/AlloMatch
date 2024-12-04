@@ -51,6 +51,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
   goToProfile() {
     this.closeMenu();
+    this.router.navigate(['/user-profile']);
+  }
+ updateProfile() {
+    this.closeMenu();
     this.router.navigate(['/edit-profile']);
   }
 

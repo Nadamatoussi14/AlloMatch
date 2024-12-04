@@ -8,6 +8,7 @@ export class TeamService {
   private teams: Team[] = [
     { id: 1, name: 'Team A', members: ['Player 1', 'Player 2'], performance: { wins: 5, losses: 3 } },
     // Ajoutez d'autres équipes ici
+    { id: 2, name: 'Team B', members: ['Player 1', 'Player 2'], performance: { wins: 2, losses: 3 } }
   ];
 
   constructor() {}
@@ -53,4 +54,8 @@ export class TeamService {
       console.error(`Team with ID ${teamId} not found.`);
     }
   }
+  searchTeams(query: string): Team[] {
+    return this.teams.filter(team => team.name.toLowerCase().includes(query.toLowerCase()));
+  }
+  
 }

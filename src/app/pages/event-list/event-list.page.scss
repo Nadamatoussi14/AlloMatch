@@ -25,4 +25,43 @@
     margin: 0;
     color: #666;
   }
+  .dashboard-container {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 16px; // Espace entre les cartes
   
+  ion-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); // Ombre douce
+    background-color: #ffffff;
+
+    ion-icon {
+      font-size: 30px; // Taille de l'icône
+      color: #007bff; // Couleur bleue
+      margin-right: 16px;
+    }
+
+    .card-content {
+      display: flex;
+      flex-direction: column;
+
+      h2 {
+        font-size: 18px;
+        font-weight: bold;
+        color: #000000;
+        margin: 0;
+      }
+
+      p {
+        font-size: 14px;
+        color: #666666; // Couleur grise pour le texte
+        margin: 4px 0 0 0;
+      }
+    }
+  }
+}

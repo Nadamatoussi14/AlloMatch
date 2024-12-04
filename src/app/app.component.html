@@ -10,7 +10,7 @@
         </ion-label>
       </div>
       <div class="action-button">
-        <ion-button (click)="goToProfile()">
+        <ion-button (click)=" updateProfile()">
           <ion-icon slot="start" name="create-outline"></ion-icon>Update Profile
         </ion-button>
       </div>
@@ -19,14 +19,15 @@
           <ion-icon name="pie-chart-outline"></ion-icon>
           Dashboard
         </ion-item>
+        <ion-item [routerLink]="'/user-profile'" (click)="closeMenu()">
+          <ion-icon name="person-outline"></ion-icon>
+         Profile
+        </ion-item>
         <ion-item [routerLink]="'/chat'" (click)="closeMenu()">
           <ion-icon name="mail-outline"></ion-icon>
           Messages
         </ion-item>
-        <ion-item>
-          <ion-icon name="person-outline"></ion-icon>
-          Contact
-        </ion-item>
+       
         <ion-item (click)="signOut()">
           <ion-icon name="log-out-outline"></ion-icon>
           Sign Out

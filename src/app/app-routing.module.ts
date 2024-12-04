@@ -152,6 +152,11 @@ const routes: Routes = [
     path: 'match-feedback',
     loadChildren: () => import('./pages/match-feedback/match-feedback.module').then( m => m.MatchFeedbackPageModule)
   },
+  {
+    path: 'your-event',
+    loadChildren: () => import('./pages/yourevent/yourevent.module').then( m => m.YoureventPageModule)
+  },
+
  
 
 ];

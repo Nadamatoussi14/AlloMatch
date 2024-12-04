@@ -1,12 +1,9 @@
 // src/app/models/player.model.ts
 export interface Player {
-    name: string;
-    position: string;
-    image: string; // Chemin vers l'image du joueur
-    matchesPlayed: number; // Nombre de matchs joués
-    goalsScored: number; // Nombre de buts marqués
-    assists: number; // Nombre d'assists
-    yellowCards: number; // Nombre de cartons jaunes
-    redCards: number; // Nombre de cartons rouges
-  }
-  
+  name: string;
+  image: string; // Chemin de l'image du joueur
+  position?: string; // Optionnel
+  matchesPlayed?: number; // Nombre de matchs joués
+  goalsScored?: number; // Nombre de buts marqués
+  assists?: number; // Nombre d'assists
+}

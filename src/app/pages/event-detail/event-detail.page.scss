@@ -1,16 +1,129 @@
-.invite-button{
-    --background: #4DA768 !important;
-    --color: #FFFFFF;
-    --border-width: 1px;
-    --border-color: transparent;
-    --border-style: solid;
-    --box-shadow: none; 
-}
-.manage-button{
-    --background: #4DA768 !important;
-    --color: #FFFFFF;
-    --border-width: 1px;
-    --border-color: transparent;
-    --border-style: solid;
-    --box-shadow: none; 
-}  
+.content {
+    --background: #ffffff;
+    padding: 20px;
+  
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin-top: 20px;
+  
+      .page-title {
+        height: 39px;
+        top: 30px;
+        left: 151px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 30px;
+        text-align: left;
+        color: #000000;
+      }
+    }
+  
+    .match-info {
+      margin-top: 20px;
+  
+      .match-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+  
+        .match-title {
+          font-size: 20px;
+          font-weight: 700;
+          color: #000;
+        }
+  
+        .match-date {
+          font-size: 14px;
+          color: #5f5f5f;
+        }
+      }
+  
+      .match-detail {
+        display: flex;
+        align-items: center;
+        margin-top: 8px;
+  
+        .icon {
+          color: #ff5a5f;
+          margin-right: 8px;
+          font-size: 25px; 
+        }
+  
+        p {
+          font-size: 16px;
+          color: #5f5f5f;
+          margin: 0;
+        }
+      }
+    }
+  
+    .teams {
+        margin-top: 20px;
+      
+        .team {
+          display: flex; /* Pour aligner l'icône et le nom de l'équipe */
+          flex-direction: column; /* Aligne les éléments verticalement */
+          align-items: flex-start; /* Aligne les éléments à gauche */
+          margin-bottom: 20px;
+      
+          h4 {
+            font-size: 18px;
+            color: #6e6e6e;
+            margin-left: 10px; /* Espace entre l'icône et le nom de l'équipe */
+            margin-top: 5px; /* Ajouter un petit espace en haut */
+          }
+      
+          .team-icon {
+            width: 20px; /* Ajustez la taille de l'icône */
+            height: 20px; /* Ajustez la taille de l'icône */
+            border-radius: 50%; /* Pour un effet circulaire */
+            object-fit: cover; /* Maintient le ratio d'aspect */
+          }
+      
+          .team-images {
+            display: flex; /* Utilisez flex pour les images des membres */
+            gap: 5px; /* Espacement entre les images */
+            margin-top: 10px; /* Espace au-dessus des images */
+      
+            img {
+              width: 40px;
+              height: 40px;
+              border-radius: 50%; /* Pour les images de joueur, arrondies */
+              object-fit: cover; /* Maintient le ratio d'aspect */
+            }
+          }
+        }
+      }
+      
+    .join-section {
+      margin-top: 20px;
+      padding-top: 10px;
+      border-top: 1px solid #e0e0e0;
+  
+      h4 {
+        font-size: 18px;
+        font-weight: 600;
+        color: #000;
+        margin-bottom: 10px;
+      }
+  
+      ion-item {
+        --background: #e0f8e0;
+        border-radius: 8px;
+      }
+  
+      ion-button {
+        --background: #4DA768 !important;
+        --color: #FFFFFF;
+        --border-width: 1px;
+        --border-color: transparent;
+        --border-style: solid;
+        --box-shadow: none;
+      }
+    }
+  }
+  

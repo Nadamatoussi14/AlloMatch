@@ -1,45 +1,80 @@
 <ion-content [fullscreen]="true">
-  <form (ngSubmit)="saveEvent()">
-    <ion-item>
-      <ion-label position="floating">Title</ion-label>
-      <ion-input [(ngModel)]="event.title" name="title"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="floating">Date</ion-label>
+  <div class="header-container">
+    <ion-back-button style="position: absolute; left: 10px; color: black;"  name="chevron-back-outline" icon-only="true" defaultHref="/"></ion-back-button>
+    <h2 class="page-title"> Add Match</h2>
+  </div>
+  <form (ngSubmit)="saveEvent()" class="event-form">
+    <!-- Champ du calendrier (date) -->
+    <div class="date-time">
+      <p class="title">Date and time :</p>
+      <!-- Ici, un composant de sélection de date et d'heure personnalisé -->
       <ion-datetime [(ngModel)]="event.date" name="date"></ion-datetime>
-    </ion-item>
+    </div>
 
-    <ion-item>
+    <!-- Champ de localisation (location) -->
+    <ion-item class="custom-item">
       <ion-label position="floating">Location</ion-label>
       <ion-input [(ngModel)]="event.location" name="location" readonly></ion-input>
       <ion-button fill="outline" (click)="openLocationPicker()">Select Location</ion-button>
     </ion-item>
 
-    <ion-item>
+    <!-- Nom du stade -->
+    <ion-item class="custom-item">
+      <ion-label position="floating">Stadium Name</ion-label>
+      <ion-input [(ngModel)]="event.name" name="name"></ion-input>
+    </ion-item>
+
+    <!-- Ajouter votre équipe -->
+    <p class="section-title">Add your team :</p>
+    <p class="sub-text">Search by username, full name, or email</p>
+    <ion-item class="custom-item">
+      <ion-label position="stacked">Add Your Team</ion-label>
+      <ion-input placeholder="Search by username, full name, or email" [(ngModel)]="searchTeam1" (ionChange)="searchPlayers('team1')" name="searchTeam1"></ion-input>
+    </ion-item>
+
+    <ion-item class="custom-item">
+      <ion-label position="floating">Team Name</ion-label>
+      <ion-input [(ngModel)]="event.team1.name" name="team1Name"></ion-input>
+    </ion-item>
+
+    <!-- Ajouter l'autre équipe -->
+    <p class="section-title">Add other team :</p>
+    <p class="sub-text">Search by username, full name, or email</p>
+    <ion-item class="custom-item">
+      <ion-label position="stacked">Add Other Team</ion-label>
+      <ion-input placeholder="Search by username, full name, or email" [(ngModel)]="searchTeam2" (ionChange)="searchPlayers('team2')" name="searchTeam2"></ion-input>
+    </ion-item>
+
+    <ion-item class="custom-item">
+      <ion-label position="floating">Other Team Name</ion-label>
+      <ion-input [(ngModel)]="event.team2.name" name="team2Name"></ion-input>
+    </ion-item>
+
+    <!-- Description du match -->
+    <ion-item class="custom-item">
       <ion-label position="floating">Description</ion-label>
       <ion-textarea [(ngModel)]="event.description" name="description"></ion-textarea>
     </ion-item>
 
+    <!-- Visibilité du match -->
     <ion-list>
       <ion-radio-group [(ngModel)]="event.visibility" name="visibility">
         <ion-list-header>
-          <ion-icon name="eye-outline" style="color: #3880ff;"></ion-icon>
-          <ion-label style="color: #3880ff;">Match Visibility</ion-label>
+          <ion-icon name="eye-outline" style="color: #0b0c0c;"></ion-icon>
+          <ion-label>Match Visibility</ion-label>
         </ion-list-header>
-
         <ion-item>
-          <ion-label style="color: #3880ff;">Public</ion-label>
+          <ion-label style="color: #0b0c0c;">Public</ion-label>
           <ion-radio slot="start" value="public"></ion-radio>
         </ion-item>
-
         <ion-item>
-          <ion-label style="color: #3880ff;">Private</ion-label>
+          <ion-label style="color:  #0b0c0c;">Private</ion-label>
           <ion-radio slot="start" value="private"></ion-radio>
         </ion-item>
       </ion-radio-group>
     </ion-list>
 
-    <ion-button expand="full" type="submit">Save Event</ion-button>
+    <!-- Bouton pour enregistrer le match -->
+    <ion-button expand="full" type="submit"  class="submit-button">Add Match</ion-button>
   </form>
 </ion-content>

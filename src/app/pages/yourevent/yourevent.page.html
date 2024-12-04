@@ -1,0 +1,77 @@
+<ion-content>
+  <ng-container *ngIf="event; else noEvent">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{ event.title }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p><strong>Nom :</strong> {{ event.name }}</p>
+        <p><strong>Location :</strong> {{ event.location }}</p>
+        <p><strong>Date :</strong> {{ event.date }}</p>
+        <p><strong>Heure :</strong> {{ event.time }}</p>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Détails de Team 1 -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{ event.team1.name }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item *ngFor="let player of event.team1.members">
+            <ion-avatar slot="start">
+              <img [src]="player.image" />
+            </ion-avatar>
+            <ion-label>{{ player.name }}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Détails de Team 2 -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{ event.team2.name }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item *ngFor="let player of event.team2.members">
+            <ion-avatar slot="start">
+              <img [src]="player.image" />
+            </ion-avatar>
+            <ion-label>{{ player.name }}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Formulaire pour ajouter un joueur -->
+    <ion-item>
+      <ion-label position="floating">Nom du joueur</ion-label>
+      <ion-input [(ngModel)]="newPlayer.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Image URL</ion-label>
+      <ion-input [(ngModel)]="newPlayer.image"></ion-input>
+    </ion-item>
+
+    <!-- Sélecteur d'équipe -->
+    <ion-segment [(ngModel)]="selectedTeam">
+      <ion-segment-button value="team1">Ajouter à {{ event.team1.name }}</ion-segment-button>
+      <ion-segment-button value="team2">Ajouter à {{ event.team2.name }}</ion-segment-button>
+    </ion-segment>
+
+    <!-- Bouton pour ajouter le joueur -->
+    <ion-button expand="block" (click)="addPlayerToTeam()">Ajouter Joueur</ion-button>
+  </ng-container>
+
+  <!-- Message d'erreur si l'événement est introuvable -->
+  <ng-template #noEvent>
+    <ion-card>
+      <ion-card-content>
+        <p>Événement introuvable. Veuillez vérifier l'ID.</p>
+      </ion-card-content>
+    </ion-card>
+  </ng-template>
+</ion-content>

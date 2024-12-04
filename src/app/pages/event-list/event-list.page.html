@@ -12,7 +12,10 @@
 
 <ion-content [fullscreen]="true">
 
-  <!-- Filtre de recherche -->
+  <!-- Barre de recherche -->
+  <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="filterEvents()" placeholder="Search events"></ion-searchbar>
+
+  <!-- Filtres supplémentaires -->
   <ion-list>
     <ion-item>
       <ion-label>Date</ion-label>
@@ -32,9 +35,10 @@
     </ion-item>
   </ion-list>
 
-  <!-- Liste des événements -->
-  <ion-list>
-    <ion-item *ngFor="let event of filteredEvents" (click)="viewEvent(event)">
+  <!-- Liste des événements sous forme de cartes -->
+  <ion-card button *ngFor="let event of filteredEvents">
+    <ion-img [src]="'assets/images/home (2).png'" (click)="viewEvent(event)"></ion-img>
+    <ion-card-content>
       <ion-label>
         <h2>{{ event.title }}</h2>
         <p>{{ event.date }} - {{ event.location }}</p>
@@ -44,6 +48,6 @@
         <ion-button fill="outline" color="danger" (click)="deleteEvent(event); $event.stopPropagation();">Delete</ion-button>
         <ion-button fill="outline" color="secondary" (click)="inviteMember(event); $event.stopPropagation();">Invite</ion-button>
       </ion-buttons>
-    </ion-item>
-  </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
