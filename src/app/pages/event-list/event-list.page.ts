@@ -56,4 +56,8 @@ export class EventListPage implements OnInit {
       event.location.toLowerCase().includes(term)
     );
   }
+  inviteMember(event: Event) {
+    this.router.navigateByUrl(`/invite-member/${event.id}`);
+  }
+  
 }

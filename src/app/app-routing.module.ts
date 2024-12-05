@@ -92,7 +92,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/team-details/team-details.module').then( m => m.TeamDetailsPageModule)
   },
   {
-    path: 'invite-member',
+    path: 'invite-member/:id',
     loadChildren: () => import('./pages/invite-member/invite-member.module').then( m => m.InviteMemberPageModule)
   },
   {
@@ -155,6 +155,10 @@ const routes: Routes = [
   {
     path: 'your-event',
     loadChildren: () => import('./pages/yourevent/yourevent.module').then( m => m.YoureventPageModule)
+  },
+  {
+    path: 'notification',
+    loadChildren: () => import('./pages/notification/notification.module').then( m => m.NotificationPageModule)
   },
 
  
